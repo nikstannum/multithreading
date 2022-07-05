@@ -2,11 +2,11 @@ package beans;
 
 import java.util.Random;
 
-public class Cars {
+public class Car {
     CarsModel carsModel;
     RegisterSign registerSign;
 
-    public Cars() {
+    public Car() {
         {
             int pickCarsModel = new Random().nextInt(CarsModel.values().length);
             this.carsModel = CarsModel.values()[pickCarsModel];
@@ -14,21 +14,22 @@ public class Cars {
         this.registerSign = new RegisterSign();
     }
 
+
     public enum CarsModel {
-        VOLVO,
-        MERCEDES,
         BMW,
-        MAZDA;
+        MAZDA,
+        MERCEDES,
+        VOLVO;
 
     }
 
     class RegisterSign {
-        private int number;
-        private String letters;
-        private int postfix;
+        private final int number;
+        private final String letters;
+        private final int postfix;
 
         public RegisterSign() {
-            this.number = (int) (Math.random() * 10_000);
+            this.number = (int) (Math.random() * 9000 + 1000);
             {
                 char[] chars = {'A', 'B', 'C', 'E', 'H', 'I', 'K', 'M', 'O', 'P', 'T', 'X'};
                 int lengthOfChars = chars.length;
@@ -36,16 +37,8 @@ public class Cars {
                 char secondSymbol = chars[new Random().nextInt(lengthOfChars)];
                 this.letters = String.valueOf(firstSymbol) + secondSymbol;
             }
-            {
-                int randomPostfix = (int) (Math.random() * 8);
-                if (randomPostfix != 0) {
-                    this.postfix = randomPostfix;
-                } else {
-                    this.postfix = randomPostfix + 1;
-                }
-            }
+            this.postfix = (int) (Math.random() * 7 + 1);
         }
-
 
         public CarsModel getCarsModel() {
             return carsModel;
@@ -69,6 +62,7 @@ public class Cars {
                     .append(number).append(" ").append(letters).append("-").append(postfix);
             return stringBuffer.toString();
         }
+
     }
 
     @Override
