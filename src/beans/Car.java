@@ -3,8 +3,8 @@ package beans;
 import java.util.Random;
 
 public class Car {
-    CarsModel carsModel;
-    RegisterSign registerSign;
+    private CarsModel carsModel;
+    private RegisterSign registerSign;
 
     public Car() {
         {
@@ -15,7 +15,7 @@ public class Car {
     }
 
 
-    public enum CarsModel {
+    enum CarsModel {
         BMW,
         MAZDA,
         MERCEDES,
